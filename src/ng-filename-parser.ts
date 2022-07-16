@@ -6,7 +6,7 @@ export function getNgFilenameTokens(name: string) {
     throw new Error('Invalid filename')
   }
 
-  let component = tokens.splice(COMPONENT_INDEX, 1).join()
+  const component = tokens.splice(COMPONENT_INDEX, 1).join()
   let type = tokens.splice(COMPONENT_INDEX, 1).join()
 
   if (type === 'stories') {
