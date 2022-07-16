@@ -74,6 +74,10 @@ Based on filename tokens user could request filename of styles/ts/stories/spec f
 
 Checkout testing files for more information.
 
+### Release
+
+- run `npm run release`
+
 ### License
 
 Luis Reinoso 2021 [MIT License](LICENSE)
