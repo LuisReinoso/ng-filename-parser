@@ -2,10 +2,9 @@
 
 Angular file name convention parser
 
-
 ```
 src/                                    project source code
-|- app/                      
+|- app/
 |  |- user/                             user module
 |  |- components/                       dummy components
 |  |  |- menu/
@@ -16,11 +15,12 @@ src/                                    project source code
 |  |  |  |- menu.stories.ts
 |  |- pages/                            smart components
 |  |  |- dashboard/
-|  |  |  |- dashboard.component.html
-|  |  |  |- dashboard.component.scss
-|  |  |  |- dashboard.component.spec.ts
-|  |  |  |- dashboard.component.ts
-|  +- ...    
+|  |  |  |- dashboard.page.html
+|  |  |  |- dashboard.page.scss
+|  |  |  |- dashboard.page.spec.ts
+|  |  |  |- dashboard.page.stories.ts
+|  |  |  |- dashboard.page.ts
+|  +- ...
 ```
 
 ### Installation
@@ -32,6 +32,7 @@ npm install --save ng-filename-parser
 ### Usage
 
 Import required helper function.
+
 ```typescript
 import {
   getNgFilenameTokens,
@@ -39,29 +40,27 @@ import {
   getHtmlFile,
   getSpecFile,
   getTypescriptFile,
-  getStorybookFile
+  getStorybookFile,
 } from 'ng-filename-parser'
-
 ```
+
 #### getNgFilenameTokens
 
 Pass as argument the angular project filename to tokenizer to `getNgFilenameTokens`
 
 ```typescript
-const filename = '/home/angular/project/src/app/app.component.ts';
-const tokens = getNgFilenameTokens(filename);
+const filename = '/home/angular/project/src/app/app.component.ts'
+const tokens = getNgFilenameTokens(filename)
 ```
 
 This will return:
 
-```JSON
+```
 {
   component: 'app',
   type: 'component'
 }
 ```
-
-
 
 #### getFiles functions
 
@@ -73,7 +72,7 @@ Based on filename tokens user could request filename of styles/ts/stories/spec f
 - `getTypescriptFile`
 - `getStorybookFile`
 
-Checkout docs or testing files for more information.
+Checkout testing files for more information.
 
 ### License
 
