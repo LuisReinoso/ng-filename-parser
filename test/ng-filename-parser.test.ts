@@ -4,7 +4,7 @@ import {
   getHtmlFile,
   getSpecFile,
   getTypescriptFile,
-  getStorybookFile
+  getStorybookFile,
 } from '../src/ng-filename-parser'
 
 describe('angular filename parser by component', () => {
@@ -49,7 +49,7 @@ describe('angular filename parser by component', () => {
     try {
       const ngFilename = getNgFilenameTokens(filename)
     } catch (error) {
-      expect(error.message).toBe('Invalid filename');
+      expect(error.message).toBe('Invalid filename')
     }
   })
 
@@ -90,18 +90,17 @@ describe('angular filename parser by component', () => {
   })
 
   it('should return storybook file given typescript', () => {
-    const filename = 'testing.component.ts';
-    const ngFilename = getStorybookFile(filename);
-    expect(ngFilename).toBe('testing.stories.ts');
-  });
+    const filename = 'testing.component.ts'
+    const ngFilename = getStorybookFile(filename)
+    expect(ngFilename).toBe('testing.stories.ts')
+  })
 
   it('should return typescript file given stories file', () => {
-    const filename = 'testing.stories.ts';
-    const ngFilename = getTypescriptFile(filename);
-    expect(ngFilename).toBe('testing.component.ts');
-  });
+    const filename = 'testing.stories.ts'
+    const ngFilename = getTypescriptFile(filename)
+    expect(ngFilename).toBe('testing.component.ts')
+  })
 })
-
 
 describe('angular filename parser by page', () => {
   it('should return component name', () => {
@@ -145,7 +144,7 @@ describe('angular filename parser by page', () => {
     try {
       const ngFilename = getNgFilenameTokens(filename)
     } catch (error) {
-      expect(error.message).toBe('Invalid filename');
+      expect(error.message).toBe('Invalid filename')
     }
   })
 
@@ -179,27 +178,15 @@ describe('angular filename parser by page', () => {
     expect(ngFilename).toBe('testing.page.spec.ts')
   })
 
-  it('should return spec file style given typescript', () => {
+  it('should return storybook file given typescript', () => {
     const filename = 'testing.page.ts'
+    const ngFilename = getStorybookFile(filename)
+    expect(ngFilename).toBe('testing.page.stories.ts')
+  })
+
+  it('should return typescript file given stories file', () => {
+    const filename = 'testing.page.stories.ts'
     const ngFilename = getTypescriptFile(filename)
     expect(ngFilename).toBe('testing.page.ts')
   })
-
-  it('should return storybook file given typescript', () => {
-    const filename = 'testing.page.ts';
-    const ngFilename = getStorybookFile(filename);
-    expect(ngFilename).toBe('testing.stories.ts');
-  });
-
-  it('should return typescript file given stories file', () => {
-    const filename = 'testing.page.ts';
-    const ngFilename = getTypescriptFile(filename);
-    expect(ngFilename).toBe('testing.page.ts');
-  });
-
-  it('should return typescript file given stories file', () => {
-    const filename = 'testing.page.ts';
-    const ngFilename = getTypescriptFile(filename);
-    expect(ngFilename).toBe('testing.page.ts');
-  });
 })
