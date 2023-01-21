@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/LuisReinoso/ng-filename-parser/compare/v2.2.0...v2.2.1) (2023-01-21)
+
+
+### Bug Fixes
+
+* **worflow:** include dist on publish npm package ([659ef27](https://github.com/LuisReinoso/ng-filename-parser/commit/659ef273d6c12730e34da2a4c0e77e1f1784aeb4))
+
 # [2.2.0](https://github.com/LuisReinoso/ng-filename-parser/compare/v2.1.0...v2.2.0) (2023-01-21)
 
 
