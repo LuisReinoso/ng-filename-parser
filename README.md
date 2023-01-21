@@ -18,7 +18,7 @@ src/                                    project source code
 |  |  |  |- dashboard.page.html
 |  |  |  |- dashboard.page.scss
 |  |  |  |- dashboard.page.spec.ts
-|  |  |  |- dashboard.page.stories.ts
+|  |  |  |- dashboard.page.stories.ts   also support dashboard.stories.ts
 |  |  |  |- dashboard.page.ts
 |  +- ...
 ```
@@ -58,7 +58,7 @@ This will return:
 ```
 {
   component: 'app',
-  type: 'component'
+  type: ['component']
 }
 ```
 

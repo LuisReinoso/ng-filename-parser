@@ -1,16 +1,22 @@
 const COMPONENT_INDEX = 0
+const TYPE_INDEX = 1
 
-export function getNgFilenameTokens(name: string) {
+interface FileNameTokens {
+  component: string
+  type: string[]
+}
+
+export function getNgFilenameTokens(name: string): FileNameTokens {
   const tokens = name.split('.')
   if (tokens.length < 3 || tokens.length > 4) {
     throw new Error('Invalid filename')
   }
 
-  const component = tokens.splice(COMPONENT_INDEX, 1).join()
-  let type = tokens.splice(COMPONENT_INDEX, 1).join()
+  const component = tokens[COMPONENT_INDEX]
+  let type = [tokens[TYPE_INDEX]]
 
-  if (type === 'stories') {
-    type = 'component'
+  if (tokens[TYPE_INDEX] === 'stories') {
+    type = ['component', 'page']
   }
 
   return {
@@ -19,31 +25,33 @@ export function getNgFilenameTokens(name: string) {
   }
 }
 
-export function getStyleFile(name: string, type: string) {
+export function getStyleFile(name: string, type: string): string[] {
   const tokens = getNgFilenameTokens(name)
-  return `${tokens.component}.${tokens.type}.${type}`
+  const fileNames = tokens.type.map(
+    (tokenType: string) => `${tokens.component}.${tokenType}.${type}`
+  )
+  return fileNames
 }
 
-export function getHtmlFile(name: string) {
+export function getHtmlFile(name: string): string[] {
   const tokens = getNgFilenameTokens(name)
-  return `${tokens.component}.${tokens.type}.html`
+  const fileNames = tokens.type.map((type: string) => `${tokens.component}.${type}.html`)
+  return fileNames
 }
 
-export function getSpecFile(name: string) {
+export function getSpecFile(name: string): string[] {
   const tokens = getNgFilenameTokens(name)
-  return `${tokens.component}.${tokens.type}.spec.ts`
+  const fileNames = tokens.type.map((type: string) => `${tokens.component}.${type}.spec.ts`)
+  return fileNames
 }
 
-export function getTypescriptFile(name: string) {
+export function getTypescriptFile(name: string): string[] {
   const tokens = getNgFilenameTokens(name)
-  return `${tokens.component}.${tokens.type}.ts`
+  const fileNames = tokens.type.map((type: string) => `${tokens.component}.${type}.ts`)
+  return fileNames
 }
 
-export function getStorybookFile(name: string) {
+export function getStorybookFile(name: string): string[] {
   const tokens = getNgFilenameTokens(name)
-
-  if (tokens.type === 'component') {
-    return `${tokens.component}.stories.ts`
-  }
-  return `${tokens.component}.${tokens.type}.stories.ts`
+  return [`${tokens.component}.${tokens.type}.stories.ts`, `${tokens.component}.stories.ts`]
 }
